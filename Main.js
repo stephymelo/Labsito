@@ -133,6 +133,7 @@ if(mouseX>170&&mouseY>400&&mouseX<230&&mouseY<450){
 function drawFiguras(){
     for(let i=0;i<arrayCuadrados.length;i++){
         e=arrayCuadrados[i];
+        e.p
 
     }
 }

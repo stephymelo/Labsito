@@ -6,6 +6,7 @@ class Cuadrado extends Figura {
  }
 
  pintarCuadrado(){
+     fill(255);
      rect(this.posX,this.posY,this.tamX,this.tamY);
  }
 
@@ -34,5 +35,7 @@ setTamY(tamY) {
     this.tamY = tamY;
 }
 
+
+ 
 
 }
