@@ -1,4 +1,4 @@
-let pantalla,numero;
+let pantalla,numero; let whatever;
 
 
 
@@ -173,3 +173,4 @@ function validarNum2(){
         throw new Exception("cant pass");        
     }
 }
+bruh momento
