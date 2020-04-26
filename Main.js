@@ -6,7 +6,7 @@ let pantalla;
 function setup(){
     createCanvas(500,500);
 
-    arrayCuadrados=[];
+    arrayCuadrados=[numero];
     arrayCirculos=[];
 
     
