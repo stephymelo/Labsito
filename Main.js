@@ -6,6 +6,8 @@ let pantalla,numero; let whatever;
 function setup(){
     createCanvas(500,500);
 
+    arrayCuadrados=[numero];
+    arrayCirculos=[];
 
     
     clicky=false;
@@ -13,9 +15,6 @@ function setup(){
     nextPantalla=false;
     numero=0;
     
-    arrayCuadrados=  new Array(numero);
- 
-    arrayCirculos=  new Array(numero);
 
 }
 
@@ -73,9 +72,6 @@ function buttons(){
             rect(120,400,50,25,20);
             rect(230,400,50,25,20);
             ellipse(330,410,40,40);
-            drawFiguras();
-            arrayCuadrados.push(new Cuadrado(10,200,50,50));
-            
             break;
     }
     
@@ -111,7 +107,7 @@ function mouseClicked(){
         
       }
 
-if(mouseX>170&&mouseY>400&&mouseX<320&&mouseY<450){
+if(mouseX>170&&mouseY>400&&mouseX<230&&mouseY<450){
     console.log("alo");
 
     try {
@@ -127,30 +123,18 @@ if(mouseX>170&&mouseY>400&&mouseX<320&&mouseY<450){
 
     //   }
     pantalla=1;
+    cuadrado.push(new Cuadrado(10,200,50,50));
 
-  
-    for(let i=0;i<arrayCuadrados.length;i++){
-   
-    console.log("aloiiii");
-    }   
-    
 
 }
 }
 
-
-function drawCirculos(){
-    // arrayCuadrados.forEach(function (, numero, arrayCirculos) {
-// }
-}
 
 function drawFiguras(){
-
     for(let i=0;i<arrayCuadrados.length;i++){
         e=arrayCuadrados[i];
-    
-        arrayCuadrados[i].pintarCuadrado();
-        console.log(arrayCuadrados.length);
+        e.p
+
     }
 }
 
