@@ -13,8 +13,9 @@ function setup(){
     nextPantalla=false;
     numero=0;
     
-    arrayCuadrados=[numero];
-    arrayCirculos=[];
+    arrayCuadrados=  new Array(numero);
+ 
+    arrayCirculos=  new Array(numero);
 
 }
 
@@ -72,6 +73,9 @@ function buttons(){
             rect(120,400,50,25,20);
             rect(230,400,50,25,20);
             ellipse(330,410,40,40);
+            drawFiguras();
+            arrayCuadrados.push(new Cuadrado(10,200,50,50));
+            
             break;
     }
     
@@ -123,17 +127,30 @@ if(mouseX>170&&mouseY>400&&mouseX<320&&mouseY<450){
 
     //   }
     pantalla=1;
-    arrayCuadrados.push(new Cuadrado(10,200,50,50));
 
+  
+    for(let i=0;i<arrayCuadrados.length;i++){
+   
+    console.log("aloiiii");
+    }   
+    
 
 }
 }
 
+
+function drawCirculos(){
+    // arrayCuadrados.forEach(function (, numero, arrayCirculos) {
+// }
+}
 
 function drawFiguras(){
+
     for(let i=0;i<arrayCuadrados.length;i++){
         e=arrayCuadrados[i];
-
+    
+        arrayCuadrados[i].pintarCuadrado();
+        console.log(arrayCuadrados.length);
     }
 }
 
