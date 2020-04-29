@@ -6,12 +6,12 @@ class Cuadrado extends Figura {
  }
 
  pintarCuadrado(){
-     fill(255);
+    
+     fill(161, 183, 255);
      rect(this.posX,this.posY,this.tamX,this.tamY);
  }
 
  
-
 
  
 

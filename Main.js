@@ -4,7 +4,7 @@ let pantalla,numero,pop,add;
 
 
 function setup(){
-    createCanvas(500,500);
+    createCanvas(530,500);
 
 
     
@@ -14,7 +14,10 @@ function setup(){
     numero=0;
     pop=false;
     add=false;
+    recty=false;
+    tam=15;
     uno="dos";
+    circulify=false;
     
     // arrayCuadrados=  new Array(numero);
     arrayCuadrados=[];
@@ -33,6 +36,7 @@ function draw(){
         case 1 :
 
              drawFiguras();
+             drawCirculos();
             
         
 
@@ -65,8 +69,8 @@ function buttons(){
             text("Decrecer Num",305,330);
             text("Crear Figuritas",175,430);
          
-            if(clicky==true){
-                text("mensaje",50,50);
+            if(clicky==true&&numero==10){
+                text("No podes pasar de 10",50,50);
             }else{
 
             }
@@ -76,6 +80,27 @@ function buttons(){
 
             break;
         case 1 :
+            if(mouseX> 50&&mouseY>400&&mouseX<100&&mouseY<450){
+                fill(149, 201, 153);
+                textSize(15);
+                text("Eliminar",52,390);
+            }
+            if(mouseX> 120&&mouseY>400&&mouseX<170&&mouseY<450){
+                fill(149, 201, 153);
+                textSize(15);
+                text("Agregar",120,390);
+            }
+
+            if(mouseX> 230&&mouseY>400&&mouseX<280&&mouseY<450){
+                fill(149, 201, 153);
+                textSize(15);
+                text("Doblar Tam",210,390);
+            }
+            if(mouseX> 310&&mouseY>390&&mouseX<360&&mouseY<450){
+                fill(149, 201, 153);
+                textSize(15);
+                text("Circulify",305,380);
+            }
             stroke(255);
             fill(235, 205, 167);
             rect(50,400,50,25,20);
@@ -91,7 +116,7 @@ function buttons(){
 }
 
 function mouseClicked(){
-    if(mouseX>50&&mouseY>300&&mouseX<150&&mouseY<350&&pantalla==0){
+    if(mouseX>50&&mouseY>300&&mouseX<200&&mouseY<350&&pantalla==0){
    
         if(numero<10){
             numero++;  
@@ -101,7 +126,7 @@ function mouseClicked(){
               
       
     }
-    if(mouseX>300&&mouseY>300&&mouseX<450&&mouseY<350&&pantalla==0){
+    if(mouseX>300&&mouseY>300&&mouseX<500&&mouseY<350&&pantalla==0){
         if(numero>0){
             numero--;  
         }else{
@@ -119,8 +144,7 @@ function mouseClicked(){
         
       }
 
-if(mouseX>170&&mouseY>400&&mouseX<320&&mouseY<450&&pantalla==0){
-    console.log("alo");
+if(mouseX>170&&mouseY>400&&mouseX<320&&mouseY<450&&pantalla==0&&numero!=0){
 
     try {
         validarNum2();
@@ -137,53 +161,89 @@ if(mouseX>170&&mouseY>400&&mouseX<320&&mouseY<450&&pantalla==0){
     pantalla=1;
 
     for(let i=0;i<numero;i++){
-        arrayCuadrados.push(new Cuadrado(10+i*(50),200,35,35));
+        arrayCuadrados.push(new Cuadrado(10+i*(50),200,tam,tam));
     }
    
-    
+    return;
 
 }
 
 
 
 if(pantalla==1){
+
+
+////ELIMINAR
     if(mouseX> 50&&mouseY>400&&mouseX<100&&mouseY<450){
+        if(numero<11){
        arrayCuadrados.pop();
+   
+        }
+        
+        if(numero<11 && circulify==true){
+            
+            arrayCirculos.pop();
+        
+             }
+        numero--;
 }
+
+
+//DOBLAR TAMANO
 if(mouseX> 230&&mouseY>400&&mouseX<280&&mouseY<450){
     arrayCuadrados.forEach(function (elem){
-        console.log(elem);
-        function elem(){
-         text("hello,",0,0);
-        }
-        // arrayCuadrados[i].doblarTam();
-        fill(255,0,0);
-    });
+    //  recty=true;
+     elem.setTamX(35);
+     elem.setTamY(35);
     
-    
-}
-
-if(mouseX> 120&&mouseY>400&&mouseX<170&&mouseY<450){
-
-        arrayCuadrados.push(new Cuadrado(70,200,35,35));
-    
-    console.log(arrayCuadrados.length);
-    
-   
+        tam=35;
         
+        
+       
+    });
+   if(circulify==true){
+
+   
+    arrayCirculos.forEach(function (elem){
+        //  recty=true;
+         elem.setTamX(35);
+         elem.setTamY(35);
+
+            tam=35;
+           
+            
+            
+           
+        });
+    
+   }
+}
+// ADDDD
+if(mouseX> 120&&mouseY>400&&mouseX<170&&mouseY<450){
+    numero++;
+    if(numero<11){
+        arrayCuadrados.push(new Cuadrado((10+numero*(50))-45,200,tam,tam));
+    }   
+    if(numero<11&&circulify==true){
+        arrayCirculos.push(new Circulo((30+numero*(50))-45,100,tam,tam));
+    } 
+  
+    console.log(numero);
 
 }
-
+// CONVERTIR A CIRCULOS
 if(mouseX> 310&&mouseY>390&&mouseX<360&&mouseY<450){
-    console.log("lol");
-    arrayCirculos=arrayCuadrados.map(drawCirculos);
+    circulify=true;
+    
+    arrayCirculos=arrayCuadrados.map(function(cir){
+    return new Circulo(cir.getPosX()+20,100,tam,tam);
+       
 
-    for(let i=0;i<numero;i++){
-    // arrayCirculos.push(new Circulo(10+i*(50),300,35,35));
-    // arrayCirculos[i].pintarCirculo();   
-    }
-    console.log(arrayCirculos.length);
+    });
+
+
    
+    console.log(arrayCirculos.length);
 }
 
 }
@@ -211,13 +271,13 @@ function drawCirculos(){
 function drawFiguras(){
     for(let i=0;i<arrayCuadrados.length;i++){
         arrayCuadrados[i].pintarCuadrado();   
+        if(recty==true){
+            arrayCuadrados[i].doblarTam();
+        }
      }
 
 
-     for(let i=0;i<arrayCirculos.length;i++){
-  
-       
-     }
+
 
 
 }

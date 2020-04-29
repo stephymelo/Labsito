@@ -6,7 +6,7 @@ class Circulo extends Figura {
     }
    
     pintarCirculo(){
-        fill(255);
+        fill(161, 255, 224);
         ellipse(this.posX,this.posY,this.tamX,this.tamY);
     }
    

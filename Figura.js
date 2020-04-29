@@ -15,8 +15,8 @@ class Figura {
     
 
     doblarTam(){
-    tamX*2;
-    tamY*2;
+    this.tamX*2;
+    this.tamY*2;
 
 
     }
