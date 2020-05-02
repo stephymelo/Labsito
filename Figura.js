@@ -6,6 +6,8 @@ class Figura {
         this.posY=posY;
         this.tamX=tamX;
         this.tamY=tamY;
+        this.vel=3;
+        
         
     }
     
@@ -20,6 +22,19 @@ class Figura {
 
 
     }
+
+   mov(){
+       this.posX+=this.vel;
+       if(this.posX>=490){
+           this.vel*=-1;
+
+       }
+       if(this.posX0<10){
+        this.vel*=-1;
+    }
+   }
+
+
     getPosX() {
         return this.posX;
     }

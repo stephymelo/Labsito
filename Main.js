@@ -271,6 +271,7 @@ function drawCirculos(){
 function drawFiguras(){
     for(let i=0;i<arrayCuadrados.length;i++){
         arrayCuadrados[i].pintarCuadrado();   
+        arrayCuadrados[i].mov();
         if(recty==true){
             arrayCuadrados[i].doblarTam();
         }
